@@ -1,3 +1,3 @@
-# Changelog for learn
+# Changelog for cors-proxy
 
 ## Unreleased changes

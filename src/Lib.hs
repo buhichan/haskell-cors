@@ -19,9 +19,8 @@ makeRequest url method headers body = do
         HttpClient.requestBody = HttpClient.RequestBodyBS body,
         HttpClient.requestHeaders = headers}
 
-proxyToURL::String->B.ByteString->[Header]->B.ByteString->IO([Header], BL.ByteString)
-proxyToURL url method headers body = do
-    manager <- HttpClient.newManager HttpClient.defaultManagerSettings
+proxyToURL:: HttpClient.Manager -> String->B.ByteString->[Header]->B.ByteString->IO([Header], BL.ByteString)
+proxyToURL manager url method headers body = do
     let req' = makeRequest url method headers body 
     (case req' of 
         Just req -> do
